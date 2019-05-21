@@ -27,6 +27,8 @@ namespace SampleTestApp.Tests.Services
 
             var fooResult = fooService.GetFooById(id);
 
+            fooRepository.Verify(x => x.GetFooById(It.IsAny<Guid>()), Times.Once);
+
             Assert.NotNull(foo);
             Assert.Equal(id, foo.Id);
             Assert.Equal(name, foo.Name);
